@@ -7,4 +7,15 @@ const sequelize = new Sequelize("postgres", "postgres", "rahman@123", {
   port: 5432,
 });
 
+const startDB = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Database connected successfully!");
+  } catch (error) {
+    console.log(`Failed DB connection due to: ${error.message}`);
+  }
+};
+
+startDB();
+
 module.exports = sequelize;
